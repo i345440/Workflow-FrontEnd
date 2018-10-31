@@ -1,0 +1,37 @@
+{
+	"TaskCollection": [
+		{
+			"Name":"Task 1",
+			"CompanyId":"Company 1",
+			"BAId": "Bussiness Area 1",
+			"Assignee": "user 1",
+			"Role": "role 1",
+			"Phase": "Phase 1",
+			"DueDate": "2018.10.01",
+			"Status": "open",
+			"Description": "description 1"
+		},
+		{
+			"Name":"Task 2",
+			"CompanyId":"Company 2",
+			"BAId": "Bussiness Area 2",
+			"Assignee": "user 2",
+			"Role": "role 2",
+			"Phase": "Phase 2",
+			"DueDate": "2018.10.02",
+			"Status": "open",
+			"Description": "description 2"
+		},
+		{
+			"Name":"Task 3",
+			"CompanyId":"Company 3",
+			"BAId": "Bussiness Area 3",
+			"Assignee": "user 3",
+			"Role": "role 3",
+			"Phase": "Phase 3",
+			"DueDate": "2018.10.03",
+			"Status": "open",
+			"Description": "description 3"
+		}
+	]
+}

@@ -1,0 +1,92 @@
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta charset="UTF-8">
+
+	<title>Workflow Front-end</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+		.clearfix{overflow:auto;_height:1%}
+		.selector {
+			margin: 0;
+			padding: 0;
+			width: 302px;
+			height: 27px;
+			border: 1px solid rgb(70, 70, 70);
+			border-radius: 2px;
+		}
+		.selector li {
+			float: left;
+			text-decoration: none;
+			list-style: none;
+			width: 100px;
+			height: 25px;
+			line-height: 25px;
+			text-align: center;
+		}
+
+		.selector li:nth-child(2),
+		.selector li:nth-child(3) {
+			border-left: 1px solid rgb(70, 70, 70);
+		}
+
+		.selector li:hover {
+			cursor: pointer;
+		}
+		.selected {
+			background: #3367ac;
+			color: #fff;
+		}
+		#data-display {
+			width: 500px;
+			height: 500px;
+			border: 1px solid rgb(70, 70, 70);
+			margin-top: -1px;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<ul class="selector">
+			<li class="selected" dataSrc="0"><span>注册1</span></li>
+			<li dataSrc="1"><span>注册2</span></li>
+			<li dataSrc="2"><span>注册3</span></li>
+		</ul>
+	</div>
+	<div id="data-display">
+
+	</div>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script>
+		$("li").click(function() {
+			$(".selected").removeClass("selected");
+			$(this).addClass("selected");
+			console.warn($(this).attr("dataSrc"));
+			$.post({
+				async: true,
+				crossDomain: true,
+				url: "https://smcf.authentication.sap.hana.ondemand.com/oauth/token",
+				ContentType: "application/x-www-form-urlencoded",
+				data: {
+					"grant_type": "password",
+					"username": "jiangyichun@163.com",
+					"password": "123456aaA",
+					"response_type": "token",
+					"client_id": "sb-clone-8fcba318-dd59-4500-80ba-64b9707e9b5f!b3278|workflow!b2746",
+					"client_secret": "8Qw9n9O3UCJtIrf//M+lYuOVdgI="
+				},
+				success: function (Response) {
+					$("#data-display").text("access token:\n" + Response.access_token)
+				},
+				error: function(e) {
+					console.error(e);
+				}
+			});
+		})
+	</script>
+</body>
+</html>

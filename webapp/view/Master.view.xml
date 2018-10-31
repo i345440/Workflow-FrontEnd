@@ -1,0 +1,64 @@
+<core:View displayBlock="true" controllerName="sap.f.FlexibleColumnLayoutWithOneColumnStart.controller.Master" height="100%"
+	  xmlns="sap.m"
+	  xmlns:f="sap.f"
+	  xmlns:u="sap.uxap"
+	  xmlns:core="sap.ui.core">
+	<f:DynamicPage id="dynamicPageId"
+				   toggleHeaderOnTitleClick="false">
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="Tasks"/>
+				</f:heading>
+				<f:actions>
+					<Button
+						class="sapUiTinyMarginEnd"
+						icon="sap-icon://synchronize"
+						type="Transparent"
+						press="refreshPage"/>
+				</f:actions>
+			</f:DynamicPageTitle>
+		</f:title>
+
+		<!-- DynamicPage Content -->
+		<f:content>
+			<Table id="tasksTable"
+				   inset="false"
+				   items="{
+						path: 'tasks>/TaskCollection',
+						sorter: {
+							path: 'Name'
+						}
+					}"
+				   class="sapFDynamicPageAlignContent"
+				   width="auto">
+				<columns>
+					<Column width="12em">
+						<Text text="Tasks" />
+					</Column>
+					<Column	hAlign="End">
+						<Text text="Status" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation" press="onListItemPress">
+						<cells>
+							<ObjectIdentifier title="{tasks>Name}" text="{tasks>Phase}" />
+							<ObjectStatus text="{tasks>Status}" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</f:content>
+
+		<!-- DynamicPage Footer -->
+		<f:footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button type="Accept" text="Accept"/>
+				<Button type="Reject" text="Reject"/>
+			</OverflowToolbar>
+		</f:footer>
+	</f:DynamicPage>
+</core:View>

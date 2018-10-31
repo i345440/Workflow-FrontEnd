@@ -1,14 +1,41 @@
-<html>
-<head>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta charset="UTF-8">
+<!DOCTYPE html>
+<html style="height: 100%;">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>SAPUI5 Navigation</title>
+		<script
+				id="sap-ui-bootstrap"
+				src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+				data-sap-ui-theme="sap_belize_plus"
+				data-sap-ui-libs="sap.m"
+				data-sap-ui-bindingSyntax="complex"
+				data-sap-ui-compatVersion="edge"
+				data-sap-ui-resourceroots='{
+					"sap.f.FlexibleColumnLayoutWithOneColumnStart": "./",
+					"sap.ui.demo.mock": "./"
+				}'>
+		</script>
 
-	<title>Workflow Front-end</title>
-</head>
-<body>
-	Hello World
-	<button>click Me</button>
-</body>
+		<script>
+			sap.ui.getCore().attachInit(function () {
+				sap.ui.require([
+					"sap/ui/core/ComponentContainer"
+				], function (ComponentContainer) {
+
+					new ComponentContainer({
+						name : 'sap.f.FlexibleColumnLayoutWithOneColumnStart',
+						height : "100%",
+						settings : {
+							id : "sap.f.FlexibleColumnLayoutWithOneColumnStart"
+						}
+					}).placeAt('content');
+				});
+			});
+		</script>
+
+	</head>
+	<body class="sapUiBody sapUiSizeCompact" id="content">
+	</body>
 </html>
